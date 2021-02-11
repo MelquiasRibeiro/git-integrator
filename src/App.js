@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 
 import Routes from './routes';
 import GlobalStyle from './styles/global';
+import Header from './components/header';
 
 function App() {
     return (
@@ -19,6 +20,7 @@ function App() {
                     pauseOnFocusLoss
                     draggable
                 />
+                <Header />
                 <Routes />
             </BrowserRouter>
         </>
