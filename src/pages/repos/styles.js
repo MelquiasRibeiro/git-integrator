@@ -58,7 +58,7 @@ export const Owner = styled.header`
     }
 `;
 
-export const ListIssues = styled.ul`
+export const ListRepos = styled.ul`
     padding-top: 30px;
     margin-top: 30px;
     border-top: 1px solid #eee;
@@ -109,7 +109,7 @@ export const ListIssues = styled.ul`
         }
     }
 `;
-export const IssueFilter = styled.div`
+export const Info = styled.div`
     display: flex;
     justify-content: center;
     padding-bottom: 15px;

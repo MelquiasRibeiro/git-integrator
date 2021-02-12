@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FaSpinner, FaSearch } from 'react-icons/fa';
 import { ImBooks } from 'react-icons/im';
 import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import {
     Container,
     Form,
@@ -15,8 +16,11 @@ export default function Home() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [newUser, setNewUser] = useState('');
-    const [users, setUsers] = useState([]);
 
+    const users = useSelector((state) => state.users);
+    const dispatch = useDispatch();
+
+    console.log(users);
     const history = useHistory();
 
     function HandleNavigate(user) {
@@ -39,7 +43,8 @@ export default function Home() {
 
             const { data } = response;
 
-            setUsers([...users, data]);
+            dispatch({ type: 'ADD_USER', user: data });
+
             setNewUser('');
         } catch (err) {
             setError(true);
