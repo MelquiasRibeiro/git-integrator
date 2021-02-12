@@ -7,7 +7,7 @@ export default function routes() {
     return (
         <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/repos" component={Repo} />
+            <Route path="/repos/:userName" component={Repo} />
         </Switch>
     );
 }

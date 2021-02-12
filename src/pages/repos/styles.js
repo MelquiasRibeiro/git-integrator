@@ -1,126 +1,162 @@
-import styled, { keyframes, css } from 'styled-components';
-import { lighten } from 'polished';
+import styled from 'styled-components';
 
 export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-export const FormContainer = styled.div`
     max-width: 700px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 0 20px rgba(8, 8, 0, 0.1);
     padding: 30px;
     margin: 80px auto;
-    width: 100%;
+    h1 {
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
     svg {
         margin-right: 10px;
     }
 `;
-export const Form = styled.form`
-    display: flex;
-    flex-direction: row;
 
-    input {
-        flex: 1;
-        border: 1px solid ${(props) => (props.error ? '#ff6b6b' : '#eee')};
-        padding: 10px 15px;
-        border-radius: 4px;
-        font-size: 16px;
-        transition: border 0.25s ease-out;
-        color: #141419;
-        font-weight: bold;
-    }
-`;
-
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg)
-  }
-`;
-
-export const SubmitButton = styled.button.attrs((props) => ({
-    type: 'submit',
-    disabled: props.loading,
-}))`
-    background: #141419;
-    border: 0;
-    padding: 0 5px 0 15px;
-    margin-left: 10px;
-    border-radius: 4px;
+export const Loading = styled.div`
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    &[disabled] {
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
-    ${(props) =>
-        props.loading &&
-        css`
-            svg {
-                animation: ${rotate} 2s infinite;
-            }
-        `}
+    height: 100vh;
 `;
-export const UserList = styled.ul`
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+export const Owner = styled.header`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+        font-size: 24px;
+        margin-top: 10px;
+    }
+    img {
+        width: 128px;
+        border-radius: 50%;
+        margin-top: 20px;
+    }
+    p {
+        margin-top: 5px;
+        font-size: 14px;
+        color: #666;
+        line-height: 1.4;
+        text-align: center;
+        max-width: 480px;
+    }
+    a {
+        color: #141419;
+        font-size: 16px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+    }
+`;
+
+export const ListIssues = styled.ul`
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
     list-style: none;
-    grid-gap: 20px;
     li {
         display: flex;
-        flex-direction: column;
-        background: #fff;
+        padding: 15px 10px;
+        border: 1px solid #eee;
         border-radius: 4px;
-        padding: 20px;
+        & + li {
+            margin-top: 10px;
+        }
         img {
-            align-self: center;
-            max-width: 200px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid #eee;
+            background-color: #333;
         }
-        > strong {
-            font-size: 16px;
-            line-height: 20px;
-            color: #333;
-            margin-top: 5px;
-        }
-        > span {
-            font-size: 21px;
-            font-weight: bold;
-            margin: 5px 0 28px;
-        }
-        button {
-            background: #141419;
-            color: #fff;
-            border: 0;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: auto;
-            align-items: center;
-            display: flex;
-            transition: background;
-            &:hover {
-                background: ${lighten(0.05, '#141419')};
-            }
-            div {
-                display: flex;
-                align-items: center;
-                padding: 12px;
-                background: rgba(0, 0, 0, 0.1);
-                svg {
-                    margin-right: 5px;
+        div {
+            flex: 1;
+            margin-left: 15px;
+            strong {
+                font-size: 16px;
+                a {
+                    text-decoration: none;
+                    color: #333;
+                    &:hover {
+                        color: #7159c1;
+                    }
+                }
+                span {
+                    background: #eee;
+                    color: #333;
+                    border-radius: 2px;
+                    font-size: 12px;
+                    font-weight: 600;
+                    height: 20px;
+                    padding: 3px 4px;
+                    margin-left: 10px;
                 }
             }
-            span {
-                flex: 1;
-                text-align: center;
-                font-weight: bold;
+            p {
+                margin-top: 5px;
+                font-size: 12px;
+                color: #999;
             }
         }
+    }
+`;
+export const IssueFilter = styled.div`
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+    span {
+        border-radius: 4px;
+        outline: 0;
+        border: 0;
+        padding: 8px;
+        margin: 0 0.25rem;
+        background-color: #141419;
+    }
+`;
+
+export const PageActions = styled.div`
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    button {
+        transition: opacity 0.25s ease-out;
+        border-radius: 4px;
+        outline: 0;
+        border: 0;
+        padding: 8px;
+        &:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+    }
+`;
+export const List = styled.ul`
+    list-style: none;
+    margin-top: 30px;
+    li {
+        color: #141419;
+        padding: 15px 8px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        & + li {
+            border-top: 1px solid #eee;
+        }
+    }
+    a {
+        color: #7159c1;
+        text-decoration: none;
     }
 `;

@@ -82,12 +82,14 @@ export const UserList = styled.ul`
         img {
             align-self: center;
             max-width: 200px;
+            background-color: #333;
         }
         > strong {
             font-size: 16px;
             line-height: 20px;
             color: #333;
             margin-top: 5px;
+            text-align: center;
         }
         > span {
             font-size: 21px;
